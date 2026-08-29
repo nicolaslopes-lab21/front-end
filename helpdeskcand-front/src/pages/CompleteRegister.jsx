@@ -1,3 +1,5 @@
+import './CompleteRegister.css';
+
 export default function CompleteRegister() {
     return (
     <div>

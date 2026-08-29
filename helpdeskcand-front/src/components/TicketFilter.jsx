@@ -1,3 +1,5 @@
+import './TicketFilter.css';
+
 export default function TicketFilter({ onFilterChange }) {
     return (
     <div style={{ margin: '10px 0' }}>

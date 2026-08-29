@@ -1,3 +1,5 @@
+import './TicketList.css';
+
 import { useState } from 'react';
 import TicketFilter from '../components/TicketFilter';
 

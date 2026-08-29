@@ -1,3 +1,5 @@
+import './FileUpload.css';
+
 export default function FileUpload({ onFileSelect }) {
     return (
     <div>

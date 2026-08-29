@@ -1,3 +1,5 @@
+import './CreateTicket.css';
+
 export default function CreateTicket() {
     return (
     <div>

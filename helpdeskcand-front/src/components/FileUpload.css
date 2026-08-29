@@ -1,0 +1,18 @@
+.file-upload-container {
+    margin-top: 10px;
+    padding: 16px;
+    border: 2px dashed #1d4ed8;
+    border-radius: 6px;
+    text-align: center;
+    background-color: #0f172a;
+}
+
+.file-upload-container input[type="file"] {
+    display: none;
+}
+
+.file-upload-label {
+    cursor: pointer;
+    color: #60a5fa;
+    font-weight: 600;
+}
