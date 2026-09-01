@@ -1,56 +1,79 @@
 .login-container {
-    max-width: 400px;
-    margin: 80px auto;
-    padding: 30px;
-    background-color: #1e293b;
-    border: 1px solid #1e40af;
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-}
-
-.login-container h2 {
-    text-align: center;
-    margin-bottom: 24px;
-    color: #3b82f6;
-}
-
-.login-form .form-group {
-    margin-bottom: 16px;
+    background-color: #060911;
+    border: 1.5px solid #0066ff;
+    box-shadow: 0px 0px 30px rgba(0, 102, 255, 0.45);
+    color: #ffffff;
+    padding: 40px;
+    border-radius: 12px;
+    font-family: system-ui, -apple-system, sans-serif;
     display: flex;
     flex-direction: column;
-}
-
-.login-form label {
-    font-size: 14px;
-    margin-bottom: 6px;
-    color: #cbd5e1;
-}
-
-.login-form input {
-    padding: 10px;
-    background-color: #0f172a;
-    border: 1px solid #1d4ed8;
-    border-radius: 6px;
-    color: #ffffff;
-    outline: none;
-}
-
-.login-form input:focus {
-    border-color: #3b82f6;
-}
-
-.login-btn {
+    align-items: center;
+    justify-content: center;
     width: 100%;
-    padding: 12px;
-    background-color: #1d4ed8;
+    max-width: 580px;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+}
+
+.input-row {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    width: 100%;
+}
+
+.login-input {
+    flex: 1;
+    background-color: #0d1322;
+    color: #ffffff;
+    border: 1.5px solid #1a2a4a;
+    padding: 14px;
+    border-radius: 8px;
+    outline: none;
+    font-size: 0.95rem;
+    transition: all 0.25s ease-in-out;
+}
+
+.login-input::placeholder {
+    color: #52668a;
+}
+
+.login-input:focus {
+    border-color: #00d2ff;
+    box-shadow: 0 0 12px rgba(0, 210, 255, 0.4);
+    background-color: #10172a;
+}
+
+.login-button {
+    background: linear-gradient(135deg, #0052cc 0%, #0066ff 100%);
     color: #ffffff;
     border: none;
-    border-radius: 6px;
-    font-weight: bold;
+    padding: 14px 40px;
+    border-radius: 8px;
     cursor: pointer;
-    margin-top: 10px;
+    font-weight: 700;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.25s ease-in-out;
+    box-shadow: 0 4px 15px rgba(0, 102, 255, 0.5);
+    width: auto;
+    min-width: 160px;
 }
 
-.login-btn:hover {
-    background-color: #2563eb;
+.login-button:hover {
+    background: linear-gradient(135deg, #0066ff 0%, #0088ff 100%);
+    box-shadow: 0 0 20px rgba(0, 136, 255, 0.8);
+    transform: translateY(-1px);
+}
+
+.login-button:active {
+    transform: translateY(0);
 }
