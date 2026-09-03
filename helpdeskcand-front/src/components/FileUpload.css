@@ -1,18 +1,23 @@
 .file-upload-container {
-    margin-top: 10px;
-    padding: 16px;
-    border: 2px dashed #1d4ed8;
-    border-radius: 6px;
-    text-align: center;
-    background-color: #0f172a;
-}
-
-.file-upload-container input[type="file"] {
-    display: none;
+    width: 100%;
 }
 
 .file-upload-label {
+    display: block;
+    background-color: #0d1322;
+    color: #00d2ff;
+    border: 1.5px dashed #0066ff;
+    padding: 12px;
+    border-radius: 8px;
+    text-align: center;
     cursor: pointer;
-    color: #60a5fa;
     font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.25s ease-in-out;
+}
+
+.file-upload-label:hover {
+    background-color: #10172a;
+    border-color: #00d2ff;
+    box-shadow: 0 0 10px rgba(0, 210, 255, 0.3);
 }
