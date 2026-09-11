@@ -1,100 +1,45 @@
-.ticket-list-container {
-    background-color: #060911;
-    border: 1.5px solid #0066ff;
-    box-shadow: 0px 0px 30px rgba(0, 102, 255, 0.45);
-    color: #ffffff;
-    padding: 40px;
-    border-radius: 12px;
-    font-family: system-ui, -apple-system, sans-serif;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    max-width: 580px;
+.metrics-container, 
+div[style*="grid"] {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+    margin: 1.5rem 0 2rem;
+}
+
+.metric-card, 
+div[style*="border"] {
+    background-color: var(--bg-input);
+    border-radius: 10px;
+    padding: 1.5rem;
     text-align: center;
+    transition: all 0.3s ease;
 }
 
-.ticket-list-title {
-    color: #00d2ff;
-    font-size: 1.6rem;
-    font-weight: 700;
-    margin-bottom: 24px;
-    text-shadow: 0 0 12px rgba(0, 210, 255, 0.6);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+
+.metric-card:nth-child(1) {
+    border: 1px solid rgba(0, 210, 255, 0.4);
+    box-shadow: 0 0 15px rgba(0, 210, 255, 0.1);
 }
 
-.ticket-list-tabs {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
-    width: 100%;
+
+.metric-card:nth-child(2) {
+    border: 1px solid rgba(16, 185, 129, 0.4);
+    box-shadow: 0 0 15px rgba(16, 185, 129, 0.1);
 }
 
-.ticket-tab.active {
-    background: linear-gradient(135deg, #0052cc 0%, #0066ff 100%);
-    border: 1.5px solid #0066ff;
-    color: #ffffff;
-    padding: 10px 24px;
-    border-radius: 8px;
-    font-weight: 600;
-    box-shadow: 0 4px 15px rgba(0, 102, 255, 0.5);
-    cursor: default;
+
+.metric-card:nth-child(3) {
+    border: 1px solid rgba(239, 68, 68, 0.4);
+    box-shadow: 0 0 15px rgba(239, 68, 68, 0.1);
 }
 
-.ticket-list-status {
-    color: #8b949e;
-    margin-top: 15px;
-    font-size: 0.95rem;
-}
 
-.status-highlight {
-    color: #00d2ff;
-    font-weight: bold;
-}
-
-.ticket-list-footer {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 35px;
-}
-
-.back-button {
-    background-color: transparent;
-    color: #00d2ff;
-    border: 1px solid #1a2a4a;
-    padding: 8px 18px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 0.85rem;
-    font-weight: 600;
-    transition: all 0.25s ease-in-out;
-}
-
-.back-button:hover {
-    background-color: #0d1322;
-    border-color: #00d2ff;
-    box-shadow: 0 0 10px rgba(0, 210, 255, 0.3);
-}
-
-.create-button {
-    background: linear-gradient(135deg, #0052cc 0%, #0066ff 100%);
-    color: #ffffff;
-    border: none;
-    padding: 8px 18px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 0.85rem;
-    font-weight: 700;
-    transition: all 0.25s ease-in-out;
-    box-shadow: 0 4px 15px rgba(0, 102, 255, 0.5);
-}
-
-.create-button:hover {
-    background: linear-gradient(135deg, #0066ff 0%, #0088ff 100%);
-    box-shadow: 0 0 20px rgba(0, 136, 255, 0.8);
-    transform: translateY(-1px);
+div[style*="dashed"], 
+.empty-box {
+    border: 1px dashed var(--border-color) !important;
+    background-color: rgba(13, 19, 34, 0.5) !important;
+    color: var(--text-muted) !important;
+    border-radius: 8px !important;
+    padding: 2.5rem !important;
+    text-align: center !important;
 }

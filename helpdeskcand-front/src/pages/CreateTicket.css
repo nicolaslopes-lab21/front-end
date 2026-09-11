@@ -1,99 +1,61 @@
-.create-ticket-container {
-    background-color: #060911;
-    border: 1.5px solid #0066ff;
-    box-shadow: 0px 0px 30px rgba(0, 102, 255, 0.45);
-    color: #ffffff;
-    padding: 35px;
-    border-radius: 12px;
-    font-family: system-ui, -apple-system, sans-serif;
-    width: 100%;
-    max-width: 650px;
+.card h1, 
+.card h2 {
+    color: #00d2ff !important;
+    font-size: 1.6rem !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.5px !important;
+    text-shadow: 0 0 12px rgba(0, 210, 255, 0.4) !important;
+    margin-bottom: 1.5rem !important;
 }
 
-.create-ticket-title {
-    color: #00d2ff;
-    font-size: 1.5rem;
-    font-weight: 700;
-    text-align: center;
-    margin-bottom: 24px;
-    text-shadow: 0 0 12px rgba(0, 210, 255, 0.6);
-    text-transform: uppercase;
+.card select, 
+.card textarea, 
+.card input[type="text"], 
+.card input[type="file"] {
+  background-color: #0f172a !important; /* Azul escuro corporativo */
+    color: #f8fafc !important;
+    border: 1px solid #1a2a4a !important;
+    border-radius: 8px !important;
+    padding: 0.75rem 1rem !important;
+    transition: all 0.25s ease-in-out !important;
 }
 
-.create-ticket-form {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
+.card select:focus, 
+.card textarea:focus, 
+.card input:focus {
+    border-color: #00d2ff !important;
+    box-shadow: 0 0 10px rgba(0, 210, 255, 0.25) !important;
+    background-color: #141e33 !important;
 }
 
-.form-row {
-    display: flex;
-    gap: 14px;
+.card select option {
+    background-color: #0f172a !important;
+    color: #ffffff !important;
 }
 
-.ticket-input, .select-input {
-    flex: 1;
-    background-color: #0d1322;
-    color: #ffffff;
-    border: 1.5px solid #1a2a4a;
-    padding: 12px;
-    border-radius: 8px;
-    outline: none;
-    font-size: 0.9rem;
-    transition: all 0.25s ease-in-out;
+.card table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    background-color: #0f172a !important;
+    border: 1px solid #1a2a4a !important;
+    border-radius: 8px !important;
+    overflow: hidden !important;
+    margin-top: 1rem !important;
 }
 
-.ticket-input:focus, .ticket-textarea:focus {
-    border-color: #00d2ff;
-    box-shadow: 0 0 10px rgba(0, 210, 255, 0.4);
+.card th {
+  background-color: #141e33 !important; /* Cabeçalho azul um pouco mais destacado */
+    color: #00d2ff !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    font-size: 0.8rem !important;
+    padding: 0.85rem 1rem !important;
+    border-bottom: 1px solid #1a2a4a !important;
 }
 
-.ticket-textarea {
-    background-color: #0d1322;
-    color: #ffffff;
-    border: 1.5px solid #1a2a4a;
-    padding: 12px;
-    border-radius: 8px;
-    outline: none;
-    font-size: 0.9rem;
-    min-height: 90px;
-    resize: vertical;
-}
-
-.file-name {
-    color: #00d2ff;
-    font-size: 0.8rem;
-    text-align: center;
-}
-
-.form-actions {
-    display: flex;
-    justify-content: space-between;
-    gap: 14px;
-    margin-top: 10px;
-}
-
-.btn-cancel {
-    background-color: transparent;
-    color: #8b949e;
-    border: 1px solid #1a2a4a;
-    padding: 12px 24px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: 600;
-}
-
-.btn-submit {
-    background: linear-gradient(135deg, #0052cc 0%, #0066ff 100%);
-    color: #ffffff;
-    border: none;
-    padding: 12px 28px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: 700;
-    box-shadow: 0 4px 15px rgba(0, 102, 255, 0.5);
-}
-
-.btn-submit:hover {
-    box-shadow: 0 0 20px rgba(0, 136, 255, 0.8);
+.card td {
+    background-color: #0f172a !important;
+    color: #e2e8f0 !important;
+    padding: 0.85rem 1rem !important;
+    border-bottom: 1px solid #1a2a4a !important;
 }
