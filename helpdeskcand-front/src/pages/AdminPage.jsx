@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 export default function AdminPage() {
     const navigate = useNavigate();
 
-  // Inicialização preguiçosa lê o localStorage diretamente sem precisar de useEffect
     const [users, setUsers] = useState(() => {
     return JSON.parse(localStorage.getItem('app_users') || '[]');
     });
@@ -39,7 +38,7 @@ export default function AdminPage() {
     <div style={{ padding: '2rem', background: '#f4f6f9', minHeight: '100vh', color: '#333' }}>
         <div style={{ maxWidth: '900px', margin: '0 auto', background: '#fff', padding: '2rem', borderRadius: '8px', boxShadow: '0 2px 8px rgba(0,0,0,0.1)' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
-            <h2>Painel Administrativo (`/admin`)</h2>
+            <h2 style={{ letterSpacing: '0.5px', margin: 0 }}>PAINEL ADMINISTRATIVO</h2>
             <button onClick={handleLogout} style={{ padding: '0.5rem 1rem', background: '#dc3545', color: '#fff', border: 'none', borderRadius: '4px', cursor: 'pointer' }}>Sair</button>
         </div>
 
