@@ -1,28 +1,21 @@
+import chamadoService from './chamadoService';
+
 export const ticketService = {
-  generateProtocol: () => {
-    const randomNum = Math.floor(1000 + Math.random() * 9000);
-    return `HD-2026-${randomNum}`;
+  createTicket: async (ticketData) => {
+    return await chamadoService.criar(ticketData);
   },
 
-  calculateSLA: (urgency) => {
-    const hours = urgency === 'Crítico' ? 1 : urgency === 'Média' ? 2 : 3;
-    return new Date(Date.now() + hours * 60 * 60 * 1000).toISOString();
+  listTickets: async (filtros) => {
+    return await chamadoService.listar(filtros);
   },
 
-  createTicket: (ticketData) => {
-    const existingTickets = JSON.parse(localStorage.getItem('tickets') || '[]');
-    
-    const newTicket = {
-      id: ticketService.generateProtocol(),
-      ...ticketData,
-      nivel: 'N1',
-      status: 'Aberto',
-      createdAt: new Date().toISOString(),
-      slaLimit: ticketService.calculateSLA(ticketData.urgencia)
-    };
+  resolveTicket: async (id, atendenteId, solucao) => {
+    return await chamadoService.concluir(id, atendenteId, solucao);
+  },
 
-    const updatedTickets = [newTicket, ...existingTickets];
-    localStorage.setItem('tickets', JSON.stringify(updatedTickets));
-    return newTicket;
+  escalateTicket: async (id, novoNivel) => {
+    return await chamadoService.escalonar(id, novoNivel);
   }
 };
+
+export default ticketService;

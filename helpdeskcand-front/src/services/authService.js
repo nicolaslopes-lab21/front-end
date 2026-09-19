@@ -1,55 +1,88 @@
-const ROLES = {
-    USUARIO_COMUM: 'USUARIO_COMUM',
-    SETOR_ADMINISTRATIVO: 'SETOR_ADMINISTRATIVO',
-    ATENDENTE_N1: 'ATENDENTE_N1',
-    ATENDENTE_N2: 'ATENDENTE_N2',
-    ATENDENTE_N3: 'ATENDENTE_N3'
+import api from './api';
+import usuarioService from './usuarioService';
+
+export const ROLES = {
+  USUARIO_COMUM: 'USUARIO_COMUM',
+  SETOR_ADMINISTRATIVO: 'SETOR_ADMINISTRATIVO',
+  ATENDENTE_N1: 'ATENDENTE_N1',
+  ATENDENTE_N2: 'ATENDENTE_N2',
+  ATENDENTE_N3: 'ATENDENTE_N3'
 };
 
 export const authService = {
-    login: async (email, password, selectedRole) => {
-    if (!email.endsWith('@helpdeskcand.com')) {
-        throw new Error('RN01: Acesso permitido apenas para e-mails corporativos (@helpdeskcand.com).');
+  login: async (email, senha) => {
+    if (!email || !email.trim()) {
+      throw new Error('Por favor, informe seu e-mail corporativo.');
     }
 
-    if (!password || password.length < 6) {
-        throw new Error('A senha deve conter no mínimo 6 caracteres.');
+    if (!email.toLowerCase().endsWith('@helpdeskcand.com')) {
+      throw new Error('RN01: Acesso permitido apenas para e-mails corporativos (@helpdeskcand.com).');
     }
 
-    if (!selectedRole || !Object.values(ROLES).includes(selectedRole)) {
-        throw new Error('Selecione um perfil de acesso válido.');
+    if (!senha) {
+      throw new Error('Por favor, informe sua senha.');
     }
 
-    const user = {
-      id: Math.floor(Math.random() * 1000) + 1,
-        name: email.split('@')[0].replace('.', ' ').toUpperCase(),
-        email,
-        role: selectedRole
+    const response = await api.post('/usuarios/login', {
+      email: email.trim(),
+      senha
+    });
+
+    const { token, usuario } = response.data;
+
+    // Normaliza objeto de usuário para compatibilidade com o front
+    const normalizedUser = {
+      ...usuario,
+      role: usuario.perfil,
+      name: usuario.cargo || (usuario.email ? usuario.email.split('@')[0] : 'Usuário'),
+      emailConfirmed: !!usuario.emailConfirmado
     };
 
-    const token = `hd-jwt-token-${Date.now()}`;
-
-    localStorage.setItem('user', JSON.stringify(user));
     localStorage.setItem('token', token);
+    localStorage.setItem('usuario', JSON.stringify(usuario));
+    localStorage.setItem('user', JSON.stringify(normalizedUser));
 
-    return { user, token };
-    },
+    return { token, usuario: normalizedUser };
+  },
 
-    logout: () => {
-    localStorage.removeItem('user');
+  logout: () => {
     localStorage.removeItem('token');
-    },
+    localStorage.removeItem('usuario');
+    localStorage.removeItem('user');
+  },
 
-    getCurrentUser: () => {
+  getCurrentUser: () => {
     try {
-        const user = localStorage.getItem('user');
-        return user ? JSON.parse(user) : null;
+      const user = localStorage.getItem('user');
+      return user ? JSON.parse(user) : null;
     } catch {
-        return null;
+      return null;
     }
-    },
+  },
 
-    isAuthenticated: () => {
+  isAuthenticated: () => {
     return !!localStorage.getItem('token');
+  },
+
+  confirmarEmail: async (usuarioId) => {
+    const usuarioAtualizado = await usuarioService.confirmarEmail(usuarioId);
+    
+    // Se o usuário confirmado for o usuário logado, atualiza o localStorage
+    const current = authService.getCurrentUser();
+    if (current && current.id === usuarioId) {
+      const updatedUser = {
+        ...current,
+        ...usuarioAtualizado,
+        role: usuarioAtualizado.perfil || current.role,
+        emailConfirmed: true,
+        emailConfirmado: true
+      };
+      localStorage.setItem('usuario', JSON.stringify(usuarioAtualizado));
+      localStorage.setItem('user', JSON.stringify(updatedUser));
+      return updatedUser;
     }
+    return usuarioAtualizado;
+  }
 };
+
+export default authService;
